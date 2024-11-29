@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Flask
+instance/
+*.sqlite
+
+# Virtualenv
+venv/
+.pipenv/
+
+# IDEs and Editors
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# Logs
+*.log
+
+# Environment variables
+.env
