@@ -1,0 +1,13 @@
+{
+    "name": "intro-no",
+    "version": "1.0.0",
+    "type": "module", 
+    "main": "src/server.js",
+    "scripts": {
+        "dev": "node src/server.js",
+        "start": "nodemon src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.21.1"
+    }
+}
