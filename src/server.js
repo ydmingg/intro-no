@@ -1,14 +1,5 @@
 import express from 'express'
-
-const data = [
-    {
-        id: 1,
-        name: '张三',
-        age: 20,
-        sex: '男'
-    },
-]
-
+import route from './routes/customer.js'
 
 // 创建服务器实例
 const app = express()
@@ -16,10 +7,10 @@ const app = express()
 // 
 app.use(express.urlencoded({ extended: true }))
 
-// 设置允许的请求方式
+// 设置解析器
 app.use(express.json())
 
-// 设置允许的请求头
+// 设置拦截器
 app.use((req, res, next) => { 
     res.setHeader('Access-Control-Allow-Origin', "*")
     res.setHeader('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, PATCH")
@@ -28,41 +19,19 @@ app.use((req, res, next) => {
     next()
 })
 
-// 定义登录的路由
-app.post("/login", (req, res) => {
-    // 获取用户输入的用户名和密码
-    const { username, password } = req.body;
-    // 判断用户名和密码是否正确
-    if (username === 'admin' && password === '123123') {
-        res.send({
-            code: 200,
-            msg: '登录成功',
-            data: {id: 1, username: 'admin', nickname: '管理员'}
-        })
-    } else {
-        res.status(403).send({
-            code: 403,
-            msg: '登录失败'
-        })
-    }
-    
-})
+
+const username = process.env.DB_USER;
+const password = process.env.DB_PASS;
+
+console.log(username, password);  // 不要在生产环境中打印这些信息
+
+// 使用导入进来的路由对象
+app.use(route)
 
 
-// 定义首页信息的路由
-app.get('/', (req, res) => {
-    console.log("接收到时，打印消息！！！");
-    res.send(data)
-
-
-})
-
-
-
-// 启动服务器
-app.listen(8080, () => {
+// 启动服务器,监听端口
+app.listen(3000, () => {
     console.log("服务器已经启动！")
-
 })
 
 
