@@ -29,15 +29,15 @@ app.use((req, res, next) => {
 })
 
 // 定义登录的路由
-app.post("/login", (req, res) => { 
-    console.log(req.body);
+app.post("/login", (req, res) => {
     // 获取用户输入的用户名和密码
     const { username, password } = req.body;
     // 判断用户名和密码是否正确
     if (username === 'admin' && password === '123123') {
         res.send({
             code: 200,
-            msg: '登录成功'
+            msg: '登录成功',
+            data: {id: 1, username: 'admin', nickname: '管理员'}
         })
     } else {
         res.status(403).send({
