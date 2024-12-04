@@ -1,5 +1,6 @@
 import express from 'express'
 import route from './routes/customer.js'
+import { Controllers } from './controllers/index.js'
 
 // 创建服务器实例
 const app = express()
@@ -27,6 +28,21 @@ console.log(username, password);  // 不要在生产环境中打印这些信息
 
 // 使用导入进来的路由对象
 app.use(route)
+
+
+// 处理数据
+Controllers();
+
+
+
+
+
+
+
+
+
+
+
 
 
 // 启动服务器,监听端口
