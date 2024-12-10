@@ -1,6 +1,7 @@
 import express from 'express'
 import route from './routes/customer.js'
 import { Controllers } from './controllers/index.js'
+import { downImg } from './controllers/demo.js'
 
 // 创建服务器实例
 const app = express()
@@ -32,6 +33,9 @@ app.use(route)
 
 // 处理数据
 Controllers();
+
+// 下载图片脚本(测试代码)
+// downImg();
 
 
 
